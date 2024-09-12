@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TapCounter</string>
+    <string name="counter">0</string>
+    <string name="upgradeBtn_text">Upgrade to Add 2</string>
+</resources>
