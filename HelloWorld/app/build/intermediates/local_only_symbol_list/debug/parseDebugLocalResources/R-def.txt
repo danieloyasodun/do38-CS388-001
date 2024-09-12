@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable _4_201526696_f038110757a7778e93ea73338acb2813491ba7fb49e2c4634b528412530d554b
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable istockphoto_509052128_612x612
+id dogImageView
+id helloButton
+id introTextView
+id main
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string button_text
+string daniel_intro
+style Base.Theme.HelloWorld
+style Theme.HelloWorld
+xml backup_rules
+xml data_extraction_rules
