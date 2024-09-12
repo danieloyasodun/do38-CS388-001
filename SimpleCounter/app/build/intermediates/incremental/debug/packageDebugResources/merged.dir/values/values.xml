@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <string name="app_name">SimpleCounter</string>
+    <string name="counter_text">0</string>
+    <string name="upgradeBtn_text">Upgrade to Add 2</string>
+    <style name="Base.Theme.SimpleCounter" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.SimpleCounter" parent="Base.Theme.SimpleCounter"/>
+</resources>

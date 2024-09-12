@@ -1,0 +1,5 @@
+com.example.simplecounter.test.app-core-1.6.1-0 C:\Users\34dan\.gradle\caches\transforms-4\f1de0c4edc1152409866ec97a8de439c\transformed\core-1.6.1\res
+com.example.simplecounter.test.app-androidTest-1 C:\Users\34dan\do38-CS388-001\SimpleCounter\app\build\generated\res\resValues\androidTest\debug
+com.example.simplecounter.test.app-mergeDebugAndroidTestResources-2 C:\Users\34dan\do38-CS388-001\SimpleCounter\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.simplecounter.test.app-mergeDebugAndroidTestResources-3 C:\Users\34dan\do38-CS388-001\SimpleCounter\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.simplecounter.test.app-debugAndroidTest-4 C:\Users\34dan\do38-CS388-001\SimpleCounter\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
