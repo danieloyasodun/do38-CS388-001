@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <item name="introTextView" type="id"/>
+    <item name="item_touch_helper_previous_elevation" type="id"/>
+    <string name="app_name">HelloWorld</string>
+    <string name="button_text">Say Hello!</string>
+    <string name="daniel_intro">Hello World! My name is Daniel I love Android Development and playing FIFA</string>
+    <style name="Base.Theme.HelloWorld" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.HelloWorld" parent="Base.Theme.HelloWorld"/>
+</resources>
