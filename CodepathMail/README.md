@@ -19,14 +19,17 @@ The following **required** functionality is completed:
     - Sender
     - Email title
     - Email summary
-  - ![Image/GIF showing the basic email list display](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![EmailLayout](https://github.com/user-attachments/assets/7b64de26-fae8-4761-bc8d-79b943d68509) <!-- Replace this link with your actual image/GIF link -->
+     
+
+    
 
 ### Stretch Features
 
 The following **stretch** functionality is implemented:
 
 - [x] (3 pts) **User can press a 'Load More' button to see the next 5 emails displayed.**
-  - ![Image/GIF showing the 'Load More' button in action](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![LoadMoreButton](https://github.com/user-attachments/assets/bee7ea26-bfc4-40f6-a75e-83f8b9644a32) <!-- Replace this link with your actual image/GIF link -->
 
 - [ ] (3 pts) **Each email displays additional information:**
   - Picture of the sender
