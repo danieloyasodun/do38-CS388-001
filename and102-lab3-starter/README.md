@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 - [x] (2 pts) **Live data is loaded from the NY Times API.**
 - [x] (4 pts) **Books are displayed using a RecyclerView.**
   - Displays book ranking, cover, title, author, and description.
-  - Book cover images are downloaded using Glide.
+  - Book cover images are downloaded using Glide. 
   -![NYTBestSeller](https://github.com/user-attachments/assets/aacfb5f1-e7f3-41c4-b7a7-03d8ee699046) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
