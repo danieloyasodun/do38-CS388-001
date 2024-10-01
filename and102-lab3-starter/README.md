@@ -19,15 +19,15 @@ The following **required** functionality is completed:
 - [x] (4 pts) **Books are displayed using a RecyclerView.**
   - Displays book ranking, cover, title, author, and description.
   - Book cover images are downloaded using Glide.
-  - ![NYTBestSeller](https://github.com/user-attachments/assets/9dc98db4-b96b-4acf-9b05-7ca679115392) <!-- Replace this link with your actual image/GIF link -->
+  -![NYTBestSeller](https://github.com/user-attachments/assets/b17623d5-473d-47f3-bcc9-bdc51c9eb7fa) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
 
 The following **stretch** functionality is implemented:
 
-- [ ] (4 pts) **Improved layout and styling to match the NY Times website.**
+- [x] (4 pts) **Improved layout and styling to match the NY Times website.**
   - Includes a "buy" button that links to Amazon.
-  - ![Image/GIF showing stretch features](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![NYTBestSeller](https://github.com/user-attachments/assets/b17623d5-473d-47f3-bcc9-bdc51c9eb7fa) <!-- Replace this link with your actual image/GIF link -->
 
 ## Notes
 
