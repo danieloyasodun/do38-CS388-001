@@ -29,4 +29,6 @@ class BestSellerBook {
     var description: String? = null
 
     //TODO-STRETCH-GOALS amazonUrl
+    @SerializedName("amazon_product_url")
+    var amazonUrl: String? = null
 }
