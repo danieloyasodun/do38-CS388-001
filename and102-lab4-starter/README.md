@@ -15,13 +15,13 @@ Time spent: **4** hours spent in total <!-- Replace 'X' with the number of hours
 The following **required** functionality is completed:
 
 - [x] (3 pts) **Articles are displayed using the RecyclerView.**
-  - ![Image/GIF showing RecyclerView implementation](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch1](https://github.com/user-attachments/assets/00def906-fd3a-4c1e-bab0-1c48fc087704) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (4 pts) **Can navigate to the Article Details screen.**
-  - ![Image/GIF showing Article Details screen](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch2](https://github.com/user-attachments/assets/5a32fffe-a3f9-42b4-969c-277dba07a7f2) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (3 pts) **Article images are downloaded and displayed using Glide.**
-  - ![Image/GIF showing Glide usage](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  -![ArticleSearch1](https://github.com/user-attachments/assets/00def906-fd3a-4c1e-bab0-1c48fc087704) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
 
