@@ -6,7 +6,7 @@ Submitted by: **Daniel Oyasodun** <!-- Replace 'Your Name Here' with your actual
 
 **Article Search** is an app designed to display the most recent articles from the NY Times.
 
-Time spent: **X** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
+Time spent: **4** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
 
 ## Application Features
 
