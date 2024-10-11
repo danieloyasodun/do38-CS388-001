@@ -21,7 +21,7 @@ The following **required** functionality is completed:
   - ![ArticleSearch2](https://github.com/user-attachments/assets/5a32fffe-a3f9-42b4-969c-277dba07a7f2) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (3 pts) **Article images are downloaded and displayed using Glide.**
-  -![ArticleSearch1](https://github.com/user-attachments/assets/00def906-fd3a-4c1e-bab0-1c48fc087704) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch1](https://github.com/user-attachments/assets/00def906-fd3a-4c1e-bab0-1c48fc087704) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
 
