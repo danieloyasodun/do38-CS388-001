@@ -19,16 +19,20 @@ data class Actor(
     val profilePath: String? = null,
     @SerialName("known_for")
     val knownFor: List<KnownFor>? = null
-) : java.io.Serializable
+) : java.io.Serializable {
+    val profileImageUrl = "https://image.tmdb.org/t/p/w500${profilePath}"
+}
 
 @Keep
 @Serializable
 data class KnownFor(
     @SerialName("title")
-    val title: String?,
+    val title: String? = null,
     @SerialName("overview")
-    val overview: String?,
+    val overview: String? = null,
     @SerialName("poster_path")
-    val posterPath: String?
-) : java.io.Serializable
+    val posterPath: String? = null
+) : java.io.Serializable {
+    val posterImageUrl = "https://image.tmdb.org/t/p/w500${posterPath}"
+}
 

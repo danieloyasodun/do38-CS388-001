@@ -31,17 +31,12 @@ class DetailActivity : AppCompatActivity() {
         actorMovieTitleView.text = actor.knownFor?.get(0)?.title
         actorMovieOverview.text = actor.knownFor?.get(0)?.overview
 
-        val baseUrl = "https://image.tmdb.org/t/p/w500"
-        val actorImageUrl = baseUrl + actor.profilePath
-
         Glide.with(this)
-            .load(actorImageUrl)
+            .load(actor.profileImageUrl)
             .into(actorImageView)
 
-        val movieImageUrl = baseUrl + actor.knownFor?.get(0)?.posterPath
-
         Glide.with(this)
-            .load(movieImageUrl)
+            .load(actor.knownFor?.get(0)?.posterImageUrl)
             .into(actorMovieImageView)
     }
 }

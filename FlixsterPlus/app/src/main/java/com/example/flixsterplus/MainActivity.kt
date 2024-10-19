@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flixsterplus.databinding.ActivityMainBinding
@@ -21,7 +22,7 @@ fun createJson() = Json {
 
 private const val TAG = "MainActivity/"
 private const val SEARCH_API_KEY = BuildConfig.API_KEY
-private const val ACTOR_SEARCH_URL = "https://api.themoviedb.org/3/movie/now_playing?&api_key=${SEARCH_API_KEY}"
+private const val ACTOR_SEARCH_URL = "https://api.themoviedb.org/3/person/popular?&api_key=${SEARCH_API_KEY}"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var actorsRecyclerView: RecyclerView
@@ -38,11 +39,14 @@ class MainActivity : AppCompatActivity() {
         actorsRecyclerView = findViewById(R.id.actors)
         val actorAdapter = ActorAdapter(this, actors)
         actorsRecyclerView.adapter = actorAdapter
+        val context = view.context
 
-        actorsRecyclerView.layoutManager = LinearLayoutManager(this).also {
+        actorsRecyclerView.layoutManager = GridLayoutManager(context, 2)
+
+        /*actorsRecyclerView.layoutManager = LinearLayoutManager(this).also {
             val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
             actorsRecyclerView.addItemDecoration(dividerItemDecoration)
-        }
+        }*/
 
         val client = AsyncHttpClient()
         client.get(ACTOR_SEARCH_URL, object : JsonHttpResponseHandler() {

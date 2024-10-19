@@ -13,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".35"
-        app:layout_constraintHeight_percent=".6" /> <!-- Adjust height percent as needed -->
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintHeight_percent=".8" /> <!-- Adjust height percent as needed -->
 
     <!-- TextView positioned below the ImageView -->
     <TextView
@@ -24,8 +24,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:ellipsize="end"
+        android:gravity="center"
         android:maxLines="2"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="Actor Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         app:layout_constraintStart_toStartOf="parent"

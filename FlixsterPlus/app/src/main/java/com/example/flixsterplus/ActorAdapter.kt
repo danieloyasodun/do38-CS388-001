@@ -48,7 +48,7 @@ class ActorAdapter(private val context: Context, private val actors: List<Actor>
             titleTextView.text = actor.name
 
             Glide.with(context)
-                .load(actor.profilePath)
+                .load(actor.profileImageUrl)
                 .into(mediaImageView)
         }
 
