@@ -7,8 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.startPostponedEnterTransition
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 const val ACTOR_EXTRA = "ACTOR_EXTRA"
 private const val TAG = "ActorAdapter"
@@ -38,10 +43,14 @@ class ActorAdapter(private val context: Context, private val actors: List<Actor>
 
         override fun onClick(p0: View?) {
             val actor = actors[absoluteAdapterPosition]
-
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra(ACTOR_EXTRA, actor)
-            context.startActivity(intent)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                (context as AppCompatActivity),
+                androidx.core.util.Pair(mediaImageView, "profile"), // ImageView shared element transition
+                androidx.core.util.Pair(titleTextView, "actor_name") // TextView shared element transition
+            )
+            context.startActivity(intent, options.toBundle())
         }
 
         fun bind(actor: Actor) {
@@ -49,8 +58,11 @@ class ActorAdapter(private val context: Context, private val actors: List<Actor>
 
             Glide.with(context)
                 .load(actor.profileImageUrl)
+                .centerCrop()
+                .apply(RequestOptions().transform(RoundedCorners(24)))
                 .into(mediaImageView)
         }
 
     }
+
 }

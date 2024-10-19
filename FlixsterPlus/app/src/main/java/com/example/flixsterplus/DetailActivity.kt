@@ -5,6 +5,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 
 private const val TAG = "DetailActivity"
 
@@ -38,5 +40,10 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(actor.knownFor?.get(0)?.posterImageUrl)
             .into(actorMovieImageView)
+
+        actorImageView.viewTreeObserver.addOnPreDrawListener {
+            startPostponedEnterTransition()
+            true
+        }
     }
 }
