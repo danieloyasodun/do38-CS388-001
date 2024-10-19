@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="detailLayout" type="id" />
+    <item name="actorMovieImage" type="id" />
+    <item name="actorMovieTitle" type="id" />
+    <item name="actorMovieOverview" type="id" />
+    <item name="actorDetailName" type="id" />
+</resources>
