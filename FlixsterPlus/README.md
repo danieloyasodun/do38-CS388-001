@@ -19,8 +19,8 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] **Add another API call and RecyclerView that lets the user interact with different data.** 
-- [ ] **Add rounded corners to the images using the Glide transformations**
-- [ ] **Implement a shared element transition when user clicks into the details of a movie**
+- [x] **Add rounded corners to the images using the Glide transformations**
+- [x] **Implement a shared element transition when user clicks into the details of a movie**
 
 The following **additional** features are implemented:
 
@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/user-attachments/assets/2bc85676-8fea-4818-b63f-4f7b1306a0cd' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/user-attachments/assets/2f67d867-cfe8-484a-b8db-a91fbfaff574' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/) for Windows
