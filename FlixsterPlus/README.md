@@ -2,7 +2,7 @@
 
 Submitted by: **Daniel Oyasodun**
 
-**FlixsterPlus - Actors** is a movie browsing app that allows users to browse ... [TODO] 
+**FlixsterPlus - Actors** is a movie browsing app that allows users to browse popular actors.
 
 Time spent: **14** hours spent in total
 
