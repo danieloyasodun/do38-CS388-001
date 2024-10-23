@@ -1,3 +1,0 @@
-com.example.helloworld.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
