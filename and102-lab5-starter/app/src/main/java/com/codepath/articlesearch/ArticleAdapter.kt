@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 const val ARTICLE_EXTRA = "ARTICLE_EXTRA"
 private const val TAG = "ArticleAdapter"
 
-class ArticleAdapter(private val context: Context, private val displayArticles: List<DisplayArticle>) :
+class ArticleAdapter(private val context: Context, private val displayArticles: MutableList<DisplayArticle>) :
     RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +27,12 @@ class ArticleAdapter(private val context: Context, private val displayArticles: 
     }
 
     override fun getItemCount() = displayArticles.size
+
+    fun updateData(newArticles: List<DisplayArticle>) {
+        displayArticles.clear() // Clear current articles
+        displayArticles.addAll(newArticles) // Add new articles
+        notifyDataSetChanged() // Notify the adapter of the data change
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
@@ -59,4 +65,5 @@ class ArticleAdapter(private val context: Context, private val displayArticles: 
             context.startActivity(intent)
         }
     }
+
 }
