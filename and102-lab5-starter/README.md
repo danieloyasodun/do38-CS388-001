@@ -6,7 +6,7 @@ Submitted by: **Daniel Oyasodun** <!-- Replace 'Your Name Here' with your actual
 
 **NYT Article Search Pt 2** is an app designed to maintain functionality while offline by caching the latest data fetched from the NYT API, ensuring a smooth user experience even without network connectivity.
 
-Time spent: **X** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
+Time spent: **14** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
 
 ## Application Features
 
@@ -21,23 +21,24 @@ The following **required** functionality is completed:
   - ![GIF showing database caching functionality](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (2 pts) **If user turns on airplane mode and closes and reopens app, old data from the database should be loaded**
-  - ![GIF showing offline mode functionality](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/7ad9c3b2-5ef1-411b-9b9a-7c521f240939) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
 
 The following **stretch** functionality is implemented:
 
 - [x] (2 pts) **Add Swipe To Refresh to force a new network call to get new data**
-  - ![GIF showing Swipe to Refresh](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/49c9f619-8694-487b-be02-7ff65c6afeb8) <!-- Replace this link with your actual image/GIF link -->
+
 
 - [x] (2 pts) **Add setting toggle for user to create preference for caching data or not (Using Shared Preferences)**
-  - ![GIF showing Shared Preferences for caching](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/16c15f84-82ec-4bc9-b966-c55f599375d4) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (+3 pts) **Implement a Search UI to filter current RecyclerView entries or fetch data from the search API with query**
-  - ![GIF showing Search UI functionality](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/aeecd87a-63bc-4e07-acda-3606529a12c9) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (2 pts) **Listen to network connectivity changes and create a UI to let people know they are offline and automatically reload new data if connectivity returns**
-  - ![GIF showing network connectivity detection](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/38865e6c-3595-4777-aee6-9e85053e26ec) <!-- Replace this link with your actual image/GIF link -->
 
 ## Notes
 
