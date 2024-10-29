@@ -18,7 +18,7 @@ The following **required** functionality is completed:
   - The app should cache the latest articles fetched from the NYT API in a local SQLite database using Room.
   - If the user has fetched data recently, those articles should be available offline.
   - Ensure old cached data is properly replaced with new data upon successful network fetches.
-  - ![GIF showing database caching functionality](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/be8e7105-e738-45ea-9f6b-6cbb1a9728bb) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (2 pts) **If user turns on airplane mode and closes and reopens app, old data from the database should be loaded**
   - ![ArticleSearchPlus](https://github.com/user-attachments/assets/7ad9c3b2-5ef1-411b-9b9a-7c521f240939) <!-- Replace this link with your actual image/GIF link -->
@@ -35,7 +35,7 @@ The following **stretch** functionality is implemented:
   - ![ArticleSearchPlus](https://github.com/user-attachments/assets/16c15f84-82ec-4bc9-b966-c55f599375d4) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (+3 pts) **Implement a Search UI to filter current RecyclerView entries or fetch data from the search API with query**
-  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/aeecd87a-63bc-4e07-acda-3606529a12c9) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearchPlus](https://github.com/user-attachments/assets/19fba3d0-1f6c-4171-a0d5-210a2df06012) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (2 pts) **Listen to network connectivity changes and create a UI to let people know they are offline and automatically reload new data if connectivity returns**
   - ![ArticleSearchPlus](https://github.com/user-attachments/assets/38865e6c-3595-4777-aee6-9e85053e26ec) <!-- Replace this link with your actual image/GIF link -->
