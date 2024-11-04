@@ -26,12 +26,13 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Clear database button
+![BitFit](https://github.com/user-attachments/assets/6af68fce-52fb-4198-a956-877b40eeb3d2)
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/user-attachments/assets/e42adbca-93ac-48b3-9a1c-f9498281932e' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with [ScreenToGif](https://www.screentogif.com/) for Windows
