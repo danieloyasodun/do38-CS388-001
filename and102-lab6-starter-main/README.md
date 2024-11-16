@@ -16,15 +16,15 @@ The following **required** functionality is completed:
 
 - [x] (3 pts) **Add and implement Bottom Navigation to your application**
   - Allows navigation between books and articles using Bottom Navigation.
-  - ![GIF showing Bottom Navigation functionality](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch3](https://github.com/user-attachments/assets/bead349a-e17d-4038-9980-18a04c3ad72f) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (4 pts) **Dynamically use fragments within Activities**
   - Displays books and articles in their respective fragments, dynamically managed within the main activity.
-  - ![GIF showing fragment management](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch3](https://github.com/user-attachments/assets/26f323a8-ff0c-41d5-b581-105a05cf7bce) <!-- Replace this link with your actual image/GIF link -->
 
 - [x] (3 pts) **Customize the toolbar and icons**
   - Provides a unique toolbar experience for each section with relevant icons.
-  - ![GIF showing toolbar customization](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch3](https://github.com/user-attachments/assets/bead349a-e17d-4038-9980-18a04c3ad72f) <!-- Replace this link with your actual image/GIF link -->
 
 ### Stretch Features
 
@@ -36,7 +36,7 @@ The following **stretch** functionality is implemented:
 
 - [x] (2 pts) **Respond to device orientation changes without resetting the application**
   - Ensures app content maintains its state across orientation changes.
-  - ![GIF showing orientation change handling](http://i.imgur.com/link/to/your/gif/file.gif) <!-- Replace this link with your actual image/GIF link -->
+  - ![ArticleSearch3](https://github.com/user-attachments/assets/bd630e70-82c3-47be-a118-f4b01fd51bcd) <!-- Replace this link with your actual image/GIF link -->
 
 ## Notes
 
