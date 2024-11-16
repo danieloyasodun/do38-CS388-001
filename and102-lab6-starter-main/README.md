@@ -6,7 +6,7 @@ Submitted by: **Daniel Oyasodun** <!-- Replace 'Your Name Here' with your actual
 
 **NYT ArticleSearch Pt 3** is an app that combines the Best Setting Books app and the Article Search app, allowing users to navigate between books and articles seamlessly.
 
-Time spent: **X** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
+Time spent: **6** hours spent in total <!-- Replace 'X' with the number of hours you spent on this project -->
 
 ## Application Features
 
