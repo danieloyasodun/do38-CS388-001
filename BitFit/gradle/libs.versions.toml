@@ -23,6 +23,7 @@ recyclerview = "1.3.2"
 recyclerviewSelection = "1.1.0"
 roomVersion = "2.4.2"
 swiperefreshlayout = "1.1.0"
+uiDesktop = "1.7.0"
 
 [libraries]
 androidx-appcompat-v142 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
@@ -48,6 +49,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-v161 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+androidx-ui-desktop = { group = "androidx.compose.ui", name = "ui-desktop", version.ref = "uiDesktop" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

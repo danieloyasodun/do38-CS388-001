@@ -16,4 +16,13 @@ interface BitFitDao {
 
     @Query("DELETE FROM bitfit_table")
     fun deleteAll()
+
+    @Query("SELECT * FROM bitfit_table ORDER BY calories DESC LIMIT 1")
+    fun getMax(): BitFitEntity?
+
+    @Query("SELECT * FROM bitfit_table ORDER BY calories ASC LIMIT 1")
+    fun getMin(): BitFitEntity?
+
+    @Query("SELECT AVG(calories) FROM bitfit_table")
+    fun getAverage(): Double
 }
