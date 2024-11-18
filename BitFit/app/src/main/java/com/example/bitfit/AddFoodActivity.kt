@@ -33,23 +33,31 @@ class AddFoodActivity : AppCompatActivity() {
 
     private fun saveFood() {
         val foodName = foodEditText.text.toString()
-        val caloriesadd = calorieEditText.text.toString()
+        val caloriesInput= calorieEditText.text.toString()
 
-        if (foodName.isNotEmpty() && caloriesadd.isNotEmpty()) {
-            val foodEntry = BitFitEntity(food = foodName, calories = caloriesadd)
+        val calories = caloriesInput.toIntOrNull()
 
-            lifecycleScope.launch(Dispatchers.IO) {
-                (application as BitFitApplication).db.bitFitDao().insertAll(listOf(foodEntry))
+        if (foodName.isNotEmpty() && calories != null) {
+            val foodEntry = BitFitEntity(food = foodName, calories = calories)
 
-                // Notify the result back to MainActivity
-                setResult(RESULT_OK)
-                launch(Dispatchers.Main) {
-                    Toast.makeText(this@AddFoodActivity, "Food added!", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
-            }
+            // Call the addFoodItem function here
+            addFoodItem(foodEntry)
+
         } else {
             Toast.makeText(this, "Food name and calories are required", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun addFoodItem(food: BitFitEntity) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            (application as BitFitApplication).db.bitFitDao().insertAll(listOf(food))
+
+            // Notify the result back to MainActivity
+            setResult(RESULT_OK)
+            launch(Dispatchers.Main) {
+                Toast.makeText(this@AddFoodActivity, "Food added!", Toast.LENGTH_SHORT).show()
+                finish() // Closes the activity after adding the food item
+            }
         }
     }
 

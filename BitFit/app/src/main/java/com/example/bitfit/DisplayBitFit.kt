@@ -2,5 +2,5 @@ package com.example.bitfit
 
 data class DisplayBitFit(
     val food: String?,
-    val calories: String?
+    val calories: Int?
 )

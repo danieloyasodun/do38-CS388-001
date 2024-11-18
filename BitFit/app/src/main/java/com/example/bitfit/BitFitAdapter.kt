@@ -38,7 +38,7 @@ class BitFitAdapter (private val context: Context, private val dIsplayBitFIt: Mu
 
                 fun bind(bitFit: DisplayBitFit) {
                     foodTextView.text = bitFit.food
-                    caloriesTextView.text = bitFit.calories
+                    caloriesTextView.text = bitFit.calories?.toString() ?: "0"
                 }
 
             }

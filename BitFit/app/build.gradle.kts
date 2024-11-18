@@ -65,6 +65,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
 
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.4.2")

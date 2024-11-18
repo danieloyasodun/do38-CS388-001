@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class BitFitEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "food") val food: String?,
-    @ColumnInfo(name = "calories") val calories: String?
+    @ColumnInfo(name = "calories") val calories: Int?
 )

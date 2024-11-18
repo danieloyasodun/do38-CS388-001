@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [BitFitEntity::class], version = 1)
+@Database(entities = [BitFitEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun bitFitDao() : BitFitDao
@@ -24,6 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java, "bitfit_database"
-            ).build()
+            ).fallbackToDestructiveMigration()
+                .build()
     }
 }
