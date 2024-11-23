@@ -51,7 +51,7 @@ Mobile App Dev - App Brainstorming Example
    - **Story:** For those who would like to stay on top of everything going on in the NBA on a day by day basis. From team stats, player stats, standings and even live games.
    - **Market:** Anyone who wants to stay constantly updated with the NBA. 
    - **Habit:** NBA fans and people who wish to better understand the NBA can use this app.
-   - **Scope:** V1 would allow users to access live games, and stats. V2 would include a more in depth UI to allow newer fans of the NBA to better understand what is going on. V3 could have a feature where you can search up two players or teams and compare their stats.
+   - **Scope:** V1 would allow users to access live games, and stats. V2 would include a more in depth UI to allow newer fans of the NBA to better understand what is going on. V3 could have a feature where you can search up two players or teams and compare their stats and aslo sync with fantasy basketball leagues to track player performances. V4 would show advanced metrics (e.g., PER, true shooting percentage), visualize player and team performance trends over time using graphs and show nearby games and ticket availability.
 3. Parking App
    - **Description**: Allows people to find available parking spots ahead of their travel to an area.
    - **Category:** Travel
