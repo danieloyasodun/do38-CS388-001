@@ -1,4 +1,4 @@
-# Milestone 1 - APP_NAME_HERE (Unit 7)
+# Milestone 1 - NBA SnapShot (Unit 7)
 
 ## Table of Contents
 
@@ -15,12 +15,12 @@
 ### App Evaluation
 
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Sports & Entertainment
+- **Mobile:** Real time stats push notifications for live game updates and breaking news. Use location to tailor content for regional teams. More tailored than ESPN, making a more personalized assistant for basketball fans and people who want to get into the sport.
+- **Story:** Become the ultimate basketball fan, get live updates, deep insights and personalized notifications about your favorite teams and players all in one place. Saves time by sonsolidating stats, updates, and team/player performance in one app. 
+- **Market:** The NBA has a massive following with millions of fans all over the globe. Potential niche audience in the fantasy basketball community, sports analysts, or gamblers who want live updates on their bets.
+- **Habit:** Daily use during the NBA season, especially during live games. Offseason engagement through player stats analysis, trade rumors, and draft news. Engagement opportunities via predictions and social sharing of stats.
+- **Scope:** MVP Features: live game tracking with scores, push notifications for updates, simple player and team profiles with season stats, league standings and schedule display. Technical Feasibility: use APIs to pull in stats and data, build simple UI to display. Scable Features: advanced analytics like shot charts and player heatmaps, and fantasy basketball integration or real-time betting odds.
 
 ## Product Spec
 
@@ -28,41 +28,59 @@
 
 **Required Features**
 
-1. [fill in your required user features here]
-2. ...
-3. ...
+1. User can register and login
+2. Display live games and statistics
+3. Display standings
+4. Display team and player stats
 
 **Optional Features**
 
-1. [fill in your optional user features here]
-2. ...
-3. ...
+1. Search Bar for in player stats, to get a specific player
+2. Notifications on player milestones (30 point games, triple doubles, etc.)
 
 ### 2. Screen Archetypes
 
-- [list first screen here]
-  - [list associated required story here]
-  - ...
-- [list second screen here]
-  - [list associated required story here]
-  - ...
+- Home Screen/Live Games
+  - [list associated required story here] User can quickly glance over scores and check game progress
+  - User can tap on a game to view detailed real-time stats (e.g., points, assists, rebounds) for both teams
+  - Push notification during key moments and when games starts 
+  - Game status indicators to know which games are active
+- Player Stats (for the season)
+  - Search for a player by name to view their individual stats for the current season
+  - See player's key stats (e.g., points per game, assists, rebounds, shooting percentage) displayed in an easy to read format
+- Team Stats (for the season)
+  - View aggregated stats for a specific team, including averages for points, rebounds, assists, and shooting percentages.
+  - Bookmark my favorite teams for quick access to their stats.
+- Standings
+  - See the current standings for all NBA teams, organized by conference and division.
+  - View additional metrics for teams in the standings, such as win-loss streaks, games behind, and home/away records.
+  - Tap on a team in the standings to view their season stats.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+- Bottom Bar Navigation
+  - Home Screen
+  - Player Stats (for the season)
+  - Team Stats (for the season)
+  - Standings
 
 **Flow Navigation** (Screen to Screen)
 
-- [list first screen here]
-  - [list screen navigation here]
-  - ...
-- [list second screen here]
-  - [list screen navigation here]
-  - ...
+- Home Screen/Live Games
+  - Live Game Stats
+- Live Game Stats
+  - Player Stats (for the game)
+  - Team Stats (for the game)
+- Home Screen/Live Games
+  - Live Game Stats
+- Team Stats (for the season)
+  - Roster
+  - Player Stats (for the season)
+- Standings
+  - Team Stats
+
 
 ## Wireframes
 
