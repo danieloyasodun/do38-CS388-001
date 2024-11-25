@@ -10,7 +10,7 @@
 
 ### Description
 
-[Description of your app]
+The app is a comprehensive companion for NBA fans, offering real-time updates and detailed statistics for teams, players, and games. Users can track live game scores, view player and team season stats, and monitor league standings with seamless navigation. Personalized features like favorite team and player tracking, push notifications for key moments, and live game insights ensure users stay connected. Designed for both casual fans and stat enthusiasts, the app provides an engaging experience with interactive visuals and timely updates. With its user-friendly interface and real-time functionality, it’s the ultimate tool for staying informed during the NBA season.
 
 ### App Evaluation
 
