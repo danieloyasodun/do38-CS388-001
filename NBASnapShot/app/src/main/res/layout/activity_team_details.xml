@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Shared Element Transition -->
+    <ImageView
+        android:id="@+id/teamImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:transitionName="teamImageTransition" />
+
+    <TextView
+        android:id="@+id/teamNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Name"
+        android:textSize="24sp"
+        android:layout_gravity="center" />
+
+    <!-- Standing Summary TextView -->
+    <TextView
+        android:id="@+id/standingSummaryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Standing Summary"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/awayRecordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Away Record"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/homeRecordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Record"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/playoffSeedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Playoff Seed"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/pointsScoredTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points Scored"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/pointsAllowedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points Allowed"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
+
+
