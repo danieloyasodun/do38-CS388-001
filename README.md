@@ -99,9 +99,7 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## GitHub Project board
 
-[Add screenshot of your Project Board with three milestones visible in
-this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/user-attachments/assets/e24ab9fc-7c3d-427e-8498-f64889da416c" width=600>
 
 ## Issue cards
 
