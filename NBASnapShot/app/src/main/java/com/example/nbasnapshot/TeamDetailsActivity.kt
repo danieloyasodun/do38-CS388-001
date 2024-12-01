@@ -24,6 +24,8 @@ class TeamDetailsActivity : AppCompatActivity() {
     private lateinit var playoffSeedTextView: TextView
     private lateinit var pointsScoredTextView: TextView
     private lateinit var pointsAllowedTextView: TextView
+    private lateinit var buyTicketsButton: Button
+    private lateinit var nextEventTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,8 @@ class TeamDetailsActivity : AppCompatActivity() {
         playoffSeedTextView = findViewById(R.id.playoffSeedTextView)
         pointsScoredTextView = findViewById(R.id.pointsScoredTextView)
         pointsAllowedTextView = findViewById(R.id.pointsAllowedTextView)
+        buyTicketsButton = findViewById(R.id.buyTicketsButton)
+        nextEventTextView = findViewById(R.id.nextEventTextView)
 
         // Set up the transition and load the image
         val teamName = intent.getStringExtra("TEAM_NAME")
@@ -47,21 +51,35 @@ class TeamDetailsActivity : AppCompatActivity() {
         val awayRecordSummary = intent.getStringExtra("AWAY_RECORD_SUMMARY")
         val avgPointsFor = intent.getStringExtra("AVG_POINTS_FOR")
         val avgPointsAgainst = intent.getStringExtra("AVG_POINTS_AGAINST")
-        val playoffSeed = intent.getStringExtra("PLAYOFF_SEED")
+        val playoffSeed = intent.getStringExtra("PLAYOFF_SEED")?.toDoubleOrNull()?.toInt()
         val ticketLink = intent.getStringExtra("TICKET_LINK")
+        val nextEvent = intent.getStringExtra("NEXT_EVENT")
 
         teamNameTextView.text = teamName
         standingSummaryTextView.text = standingSummary
         awayRecordTextView.text = "Away Record: $awayRecordSummary"
         homeRecordTextView.text = "Home Record: $homeRecordSummary"
-        playoffSeedTextView.text = "Playoff Seed:  $playoffSeed"
+        playoffSeedTextView.text = "Playoff Seed:  ${playoffSeed ?: "N/A"}"
         pointsScoredTextView.text = "Points Scored: $avgPointsFor"
         pointsAllowedTextView.text = "Points Allowed: $avgPointsAgainst"
+        nextEventTextView.text = "Next Event: $nextEvent"
 
         // Use Glide to load the image (same as before)
         Glide.with(this)
             .load(imageUrl)
             .into(teamImageView)
+
+        // Check if ticketLink is valid
+        if (!ticketLink.isNullOrEmpty()) {
+            buyTicketsButton.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(ticketLink))
+                startActivity(intent)
+            }
+        } else {
+            buyTicketsButton.setOnClickListener {
+                Toast.makeText(this, "No ticket link available", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onStart() {

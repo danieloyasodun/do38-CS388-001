@@ -90,9 +90,13 @@ class TeamStats : Fragment() {
                                 val avgPointsAgainstRounded = "%.2f".format(avgPointsAgainst).toDouble()
                                 val avgPointsForRounded = "%.2f".format(avgPointsFor).toDouble()
 
+                                val nextEventName = nbaStats.nextEvent?.firstOrNull()?.shortName ?: "No upcoming events"
+                                val ticketLink = nbaStats.links.find { it.relation.contains("tickets") }?.link ?: "No ticket link available"
+
                                 teamsList.add(
                                     DisplayTeam(
                                         teamName = nbaStats.teamName,
+                                        abbreviation = nbaStats.abbreviation,
                                         logoUrl = nbaStats.logos[0].logoUrl,
                                         recordSummary = overallRecordSummary,
                                         standingSummary = standingSummary,
@@ -100,7 +104,9 @@ class TeamStats : Fragment() {
                                         awayRecordSummary = awayRecordSummary,
                                         avgPointsAgainst = avgPointsAgainstRounded.toString(),
                                         avgPointsFor = avgPointsForRounded.toString(),
-                                        playoffSeed = playoffSeed.toString()
+                                        playoffSeed = playoffSeed.toString(),
+                                        nextEvent = nextEventName,      // Add next event
+                                        ticketLink = ticketLink
                                     )
                                 )
                                 teamsList.sortBy { it.teamName }

@@ -71,6 +71,21 @@
         android:layout_marginTop="8dp"
         android:layout_gravity="center"/>
 
+    <TextView
+        android:id="@+id/nextEventTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Event"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/buyTicketsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BUY TICKETS FOR THE NEXT GAME"
+        android:layout_gravity="center"/>
+
 </LinearLayout>
 
 

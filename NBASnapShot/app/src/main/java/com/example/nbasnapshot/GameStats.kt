@@ -21,7 +21,6 @@ data class GameDay(
 @Serializable
 data class GameEvent(
     @SerialName("shortName") val shortName: String,
-    @SerialName("season") val season: Season,
     @SerialName("competitions") val competitions: List<Competition>,
     @SerialName("status") val status: Status
 )
@@ -29,7 +28,7 @@ data class GameEvent(
 @Keep
 @Serializable
 data class Status(
-    @SerialName("clock") val clock: Int,
+    @SerialName("clock") val clock: Double?,
     @SerialName("displayClock") val displayClock: String,
     @SerialName("period") val period: Int,
     @SerialName("type") val type: StatusType
@@ -44,14 +43,6 @@ data class StatusType(
     @SerialName("description") val description: String,
     @SerialName("detail") val detail: String,
     @SerialName("shortDetail") val shortDetail: String
-)
-
-@Keep
-@Serializable
-data class Season(
-    @SerialName("year") val year: Int,
-    @SerialName("type") val type: Int,
-    @SerialName("slug") val slug: String
 )
 
 @Keep
@@ -79,18 +70,33 @@ data class Address(
 @Serializable
 data class Competitor(
     @SerialName("homeAway") val homeORAway: String,
-    @SerialName("winner") val winner: Boolean,
+    @SerialName("winner") val winner: Boolean? = null,
     @SerialName("team") val team: GameTeam,
     @SerialName("score") val score: String,
-    @SerialName("lineScores") val lineScores: List<Int>,
+    @SerialName("linescores") val lineScores: List<LineScore>? = null,
     @SerialName("statistics") val statistics: List<Statistic>,
-    @SerialName("leaders") val leaders: List<Leader>
+    @SerialName("leaders") val leaders: List<Leader>,
+    @SerialName("records") val record: List<GRecord>
+)
+
+
+@Keep
+@Serializable
+data class LineScore(
+    @SerialName("value") val value: Int
+)
+
+@Keep
+@Serializable
+data class GRecord(
+    @SerialName("name") val name: String,
+    @SerialName("summary") val summary: String
 )
 
 @Keep
 @Serializable
 data class Leader(
-    @SerialName("DisplayName") val name: String,
+    @SerialName("displayName") val name: String,
     @SerialName("shortDisplayName") val shortDisplayName: String,
     @SerialName("leaders") val leaders: List<LeaderDetail>
 )
@@ -99,7 +105,7 @@ data class Leader(
 @Serializable
 data class LeaderDetail(
     @SerialName("displayValue") val displayValue: String,
-    @SerialName("value") val value: Int,
+    @SerialName("value") val value: Double,
     @SerialName("athlete") val athlete: Athlete
 )
 

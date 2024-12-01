@@ -49,6 +49,8 @@ RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
             intent.putExtra("AVG_POINTS_FOR", team.avgPointsFor)
             intent.putExtra("AVG_POINTS_AGAINST", team.avgPointsAgainst)
             intent.putExtra("PLAYOFF_SEED", team.playoffSeed)
+            intent.putExtra("TICKET_LINK", team.ticketLink)
+            intent.putExtra("NEXT_EVENT", team.nextEvent)
 
             // Set up the shared element transition
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(

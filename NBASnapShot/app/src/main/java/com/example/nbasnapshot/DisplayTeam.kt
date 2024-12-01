@@ -2,6 +2,7 @@ package com.example.nbasnapshot
 
 data class DisplayTeam(
     val teamName: String,
+    val abbreviation: String,
     val logoUrl: String,
     val recordSummary: String,
     val standingSummary: String,
@@ -9,5 +10,7 @@ data class DisplayTeam(
     val awayRecordSummary: String,
     val avgPointsAgainst: String,
     val avgPointsFor: String,
-    val playoffSeed: String
+    val playoffSeed: String,
+    val nextEvent: String,
+    val ticketLink: String
 ) : java.io.Serializable

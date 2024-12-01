@@ -12,7 +12,14 @@ data class NBAStats(
     @SerialName("logos") val logos: List<Logo>,
     @SerialName("links") val links: List<TeamLink>,
     @SerialName("record") val record: Record?,
-    @SerialName("standingSummary") val standingSummary: String? = null
+    @SerialName("standingSummary") val standingSummary: String? = null,
+    @SerialName("nextEvent") val nextEvent: List<NextEvent>? = null
+)
+
+@Keep
+@Serializable
+data class NextEvent(
+    @SerialName("shortName") val shortName: String,
 )
 
 
