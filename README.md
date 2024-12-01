@@ -103,13 +103,16 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## Issue cards
 
-- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+- <img src="https://github.com/user-attachments/assets/b733c9ee-7ea2-49ca-bc72-d8cad9e6b742" width=600>
+- <img src="https://github.com/user-attachments/assets/d210cf9e-6852-4af0-a367-3506060246e1" width=600>
 
 ## Issues worked on this sprint
 
-- List the issues you completed this sprint
-- [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
+- Completed Team Stats, and Team Detail View (UI needs fixing but data loaded in properly)
+- Live Game View started, but not yet completed
+- Games from 12/01/24 displayed gif taken at 6:18 pm, not all games have started
+- ![NBASnapShot](https://github.com/user-attachments/assets/bfbf7608-9fdc-4757-b44c-a7bc6d0a359f)
+
 
 <br>
 
