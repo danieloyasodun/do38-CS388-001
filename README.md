@@ -103,12 +103,12 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## Issue cards
 
-- <img src="https://github.com/user-attachments/assets/b733c9ee-7ea2-49ca-bc72-d8cad9e6b742" width=600>
+- <img src="https://github.com/user-attachments/assets/4296a9cf-06eb-451f-a705-6e21e38382a5" width=600>
 - <img src="https://github.com/user-attachments/assets/d210cf9e-6852-4af0-a367-3506060246e1" width=600>
 
 ## Issues worked on this sprint
 
-- Completed Team Stats, and Team Detail View (UI needs fixing but data loaded in properly)
+- Completed Team Stats, and Team Detail View (UI needs fixing but data loaded in properly, slow load due to not wanting to have to ping the api 30 consecutive times without error)
 - Live Game View started, but not yet completed
 - Games from 12/01/24 displayed gif taken at 6:18 pm, not all games have started
 - ![NBASnapShot](https://github.com/user-attachments/assets/bfbf7608-9fdc-4757-b44c-a7bc6d0a359f)
