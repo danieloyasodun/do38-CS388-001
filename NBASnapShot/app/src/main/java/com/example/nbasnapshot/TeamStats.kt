@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -75,6 +74,23 @@ class TeamStats : Fragment() {
                             // Parse response and add to list
                             val teamResponse = createJson().decodeFromString<TeamResponse>(json?.jsonObject.toString())
                             val nbaStats = teamResponse.team
+
+                            val newTeam = nbaStats?.let {
+                                val overallRecord = nbaStats.record?.items?.find { it.description == "Overall Record" }
+                                val statsList = overallRecord?.stats
+                                val playoffSeed = statsList?.find { it.name == "playoffSeed" }?.value ?: 0
+
+                                TeamEntity(
+                                    abbreviation = nbaStats.abbreviation,
+                                    name = nbaStats.teamName,
+                                    logoUrl = nbaStats.logos[0].logoUrl,
+                                    record = overallRecord?.summary ?: "N/A",
+                                    winPercentage = statsList?.find { it.name == "winPercent" }?.value?.toString() ?: "0.0",
+                                    playoffSeed = playoffSeed
+                                )
+                            }
+
+
                             if (nbaStats != null) {
                                 val overallRecordSummary = nbaStats.record?.items?.find { it.description == "Overall Record" }?.summary ?: "N/A"
                                 val homeRecordSummary = nbaStats.record?.items?.find { it.description == "Home Record" }?.summary ?: "N/A"
@@ -84,8 +100,10 @@ class TeamStats : Fragment() {
                                 val stats = nbaStats.record?.items?.find { it.description == "Overall Record" }?.stats
 
                                 val avgPointsAgainst = stats?.find { it.name == "avgPointsAgainst" }?.value?: 0.0
+                                val winPercent = stats?.find { it.name == "avgPointsAgainst" }?.value?: 0.0
                                 val avgPointsFor = stats?.find { it.name == "avgPointsFor" }?.value?: 0.0
                                 val playoffSeed = stats?.find { it.name == "playoffSeed" }?.value?: 0
+                                val streak = stats?.find { it.name == "streak" }?.value?: "No streak available"
 
                                 val avgPointsAgainstRounded = "%.2f".format(avgPointsAgainst).toDouble()
                                 val avgPointsForRounded = "%.2f".format(avgPointsFor).toDouble()
@@ -106,7 +124,11 @@ class TeamStats : Fragment() {
                                         avgPointsFor = avgPointsForRounded.toString(),
                                         playoffSeed = playoffSeed.toString(),
                                         nextEvent = nextEventName,      // Add next event
-                                        ticketLink = ticketLink
+                                        ticketLink = ticketLink,
+                                        streak = streak.toString(),
+                                        color = nbaStats.color,
+                                        alternateColor = nbaStats.alternateColor,
+                                        winPercent = winPercent.toString()
                                     )
                                 )
                                 teamsList.sortBy { it.teamName }
@@ -120,7 +142,7 @@ class TeamStats : Fragment() {
                 })
 
                 // Introduce a delay between requests
-                delay(200)
+                //delay(200)
             }
         }
     }

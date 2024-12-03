@@ -17,9 +17,9 @@ private const val TAG = "TeamAdapter"
 class TeamAdapter(private val context: Context, private val displayTeams: MutableList<DisplayTeam>):
 RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
-        private val teamImageView = itemView.findViewById<ImageView>(R.id.homeTeamImage)
-        private val teamNameTextView = itemView.findViewById<TextView>(R.id.teamName)
-        private val recordSummaryTextView: TextView = itemView.findViewById(R.id.teamRecord)
+        private val teamImageView = itemView.findViewById<ImageView>(R.id.teamImage)
+        private val teamNameTextView = itemView.findViewById<TextView>(R.id.standingTeamName)
+        private val recordSummaryTextView: TextView = itemView.findViewById(R.id.standingTeamRecord)
 
         init {
             itemView.setOnClickListener(this)
@@ -51,6 +51,10 @@ RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
             intent.putExtra("PLAYOFF_SEED", team.playoffSeed)
             intent.putExtra("TICKET_LINK", team.ticketLink)
             intent.putExtra("NEXT_EVENT", team.nextEvent)
+            intent.putExtra("STREAK", team.streak)
+            intent.putExtra("ABBR", team.abbreviation)
+            intent.putExtra("COLOR", team.color)
+            intent.putExtra("ALTERNATE_COLOR", team.alternateColor)
 
             // Set up the shared element transition
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(

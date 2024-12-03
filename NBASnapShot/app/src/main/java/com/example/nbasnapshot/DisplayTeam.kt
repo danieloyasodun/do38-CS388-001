@@ -12,5 +12,9 @@ data class DisplayTeam(
     val avgPointsFor: String,
     val playoffSeed: String,
     val nextEvent: String,
-    val ticketLink: String
+    val ticketLink: String,
+    val streak: String,
+    val color : String,
+    val alternateColor : String,
+    val winPercent : String
 ) : java.io.Serializable

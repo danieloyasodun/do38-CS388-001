@@ -30,13 +30,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.serialization.decodeFromString
 
-private const val TAG = "MainActivity/"
-private  val ABR_LIST = listOf("ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS",
-                                "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NO", "NY",
-                                "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SA", "TOR", "UTAH", "WSH")
-private const val TEAM_API_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams"
-private const val ARTICLE_SEARCH_URL2 = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,12 +48,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_team_stats -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, TeamStats())
-                        .commit()
-                    true
-                }
-                R.id.nav_player_stats -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, PlayerStats())
                         .commit()
                     true
                 }

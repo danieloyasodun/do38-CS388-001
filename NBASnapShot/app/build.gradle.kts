@@ -1,8 +1,10 @@
 plugins {
-    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    id("com.google.gms.google-services")
+    id("com.android.application")
+    kotlin("plugin.parcelize")
 }
 
 android {
@@ -40,13 +42,15 @@ android {
 val roomVersion = "2.4.2"
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
 
     implementation("androidx.fragment:fragment-ktx:1.5.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("com.google.android.material:material:1.6.1")
@@ -62,4 +66,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v113)
     androidTestImplementation(libs.androidx.espresso.core.v340)
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
+

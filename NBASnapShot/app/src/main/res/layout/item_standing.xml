@@ -5,16 +5,31 @@
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Playoff Seed -->
+    <TextView
+        android:id="@+id/playoffSeed"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:background="@android:color/darker_gray"
+        android:text="1"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <ImageView
-        android:id="@+id/teamImage"
+        android:id="@+id/standingTeamImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/playoffSeed"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintWidth_percent=".35" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
         android:id="@+id/standingTeamName"
@@ -26,8 +41,8 @@
         android:text="Team Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/teamImage"
-        app:layout_constraintTop_toTopOf="@+id/teamImage" />
+        app:layout_constraintStart_toEndOf="@id/standingTeamImage"
+        app:layout_constraintTop_toTopOf="@+id/standingTeamImage" />
 
     <TextView
         android:id="@+id/standingTeamRecord"
@@ -44,7 +59,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/teamImage"
+        app:layout_constraintTop_toBottomOf="@id/standingTeamImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

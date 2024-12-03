@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.nbasnapshot" />
+                  <option name="mobileSdkAppId" value="1:128430629181:android:8df737cd9c1b1ee82ae554" />
+                  <option name="projectId" value="nbasnapshot-a0d5c" />
+                  <option name="projectNumber" value="128430629181" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

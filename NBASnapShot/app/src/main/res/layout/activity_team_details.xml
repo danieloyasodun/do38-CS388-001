@@ -1,91 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Shared Element Transition -->
+    <!-- Left side: TextViews and Button -->
+    <TextView
+        android:id="@+id/nbaTeams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TEAM NAME"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:background="#f1f1f1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <ImageView
         android:id="@+id/teamImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:transitionName="teamImageTransition" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nbaTeams"
+        android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/teamNameTextView"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/leftLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Team Name"
-        android:textSize="24sp"
-        android:layout_gravity="center" />
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rosterRecyclerView"
+        app:layout_constraintTop_toBottomOf="@id/teamImageView"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <!-- Standing Summary TextView -->
-    <TextView
-        android:id="@+id/standingSummaryTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Standing Summary"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/standingSummaryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Standing Summary"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="start" />
 
-    <TextView
-        android:id="@+id/awayRecordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Away Record"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/awayRecordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Away Record"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <TextView
-        android:id="@+id/homeRecordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Record"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/homeRecordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Record"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <TextView
-        android:id="@+id/playoffSeedTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Playoff Seed"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/streakTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Streak"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <TextView
-        android:id="@+id/pointsScoredTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Points Scored"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/playoffSeedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playoff Seed"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <TextView
-        android:id="@+id/pointsAllowedTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Points Allowed"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/pointsScoredTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Points Scored"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <TextView
-        android:id="@+id/nextEventTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next Event"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/pointsAllowedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Points Allowed"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-    <Button
-        android:id="@+id/buyTicketsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BUY TICKETS FOR THE NEXT GAME"
-        android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/nextEventTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next Event"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/buyTicketsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUY TICKETS FOR THE NEXT GAME"
+            android:layout_gravity="start" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rosterRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftLayout"
+        app:layout_constraintTop_toBottomOf="@id/teamImageView"
+        tools:listitem="@layout/item_roster"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

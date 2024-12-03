@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128430629181",
+    "project_id": "nbasnapshot-a0d5c",
+    "storage_bucket": "nbasnapshot-a0d5c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128430629181:android:8df737cd9c1b1ee82ae554",
+        "android_client_info": {
+          "package_name": "com.example.nbasnapshot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ7CZd2B8Nh8xPy9NH4Ucfo5C3PPGsmrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

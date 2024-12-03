@@ -1,0 +1,280 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/gameHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Away @ Home"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:background="#f1f1f1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- First TextView for Away Team Name -->
+    <ImageView
+        android:id="@+id/awayTeamImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameHeader" />
+
+    <!-- TextView for Away Team Score -->
+    <TextView
+        android:id="@+id/awayTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Away Team"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/awayTeamImage" />
+
+    <!-- TextView for Away Team Score -->
+    <TextView
+        android:id="@+id/awayTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Away Team Score"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/awayTeam" />
+
+    <!-- Labels for Quarter 1, Quarter 2, Quarter 3, Quarter 4 -->
+
+    <TextView
+        android:id="@+id/displayClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="8dp"
+        android:text="0:00"
+        app:layout_constraintEnd_toStartOf="@+id/homeTeamScore"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toEndOf="@+id/awayTeamScore"
+        app:layout_constraintTop_toBottomOf="@+id/gameQuarter" />
+
+    <TextView
+        android:id="@+id/gameQuarter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Quarter"
+        app:layout_constraintEnd_toStartOf="@+id/homeTeam"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/awayTeam"
+        app:layout_constraintTop_toBottomOf="@+id/homeQuarterLinearLayout" />
+
+    <TextView
+        android:id="@+id/statLeaders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="STAT LEADERS"
+        app:layout_constraintEnd_toStartOf="@+id/homeTeamScore"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toEndOf="@+id/awayTeamScore"
+        app:layout_constraintTop_toBottomOf="@+id/displayClock" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/quarterLinearLayout"
+        app:layout_constraintEnd_toStartOf="@id/teamImage"
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toEndOf="@id/awayTeamImage"
+        app:layout_constraintTop_toBottomOf="@id/gameHeader"
+        app:layout_constraintVertical_bias="0.474">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Q1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Q2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Q3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/quarterLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/awayTeamImage"
+        app:layout_constraintEnd_toStartOf="@id/teamImage"
+        app:layout_constraintTop_toBottomOf="@id/gameHeader"
+        app:layout_constraintBottom_toBottomOf="@id/awayTeamImage"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/awayQuarterImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/awayQuarter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aq1"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/awayQuarter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aq2"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/awayQuarter3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aq3"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/awayQuarter4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aq4" />
+    </LinearLayout>
+
+    <!-- LinearLayout to hold the Home Quarter Scores -->
+    <LinearLayout
+        android:id="@+id/homeQuarterLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/awayTeamImage"
+        app:layout_constraintEnd_toStartOf="@id/teamImage"
+        app:layout_constraintTop_toBottomOf="@id/quarterLinearLayout"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/homeQuarterImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/homeQuarter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hq1"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/homeQuarter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hq2"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/homeQuarter3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hq3"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/homeQuarter4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hq4" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/teamImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gameHeader" />
+
+    <!-- TextView for Home Team Score -->
+    <TextView
+        android:id="@+id/homeTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Home Team"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teamImage" />
+
+    <!-- TextView for Home Team Score -->
+    <TextView
+        android:id="@+id/homeTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Home Team Score"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTeam" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item_game_leaders"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamScore"
+        app:layout_constraintEnd_toStartOf="@id/recyclerViewRight"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/recyclerViewLeft"
+        app:layout_constraintTop_toBottomOf="@id/homeTeamScore"
+        tools:listitem="@layout/item_game_leaders" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

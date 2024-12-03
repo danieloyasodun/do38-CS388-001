@@ -13,7 +13,9 @@ data class NBAStats(
     @SerialName("links") val links: List<TeamLink>,
     @SerialName("record") val record: Record?,
     @SerialName("standingSummary") val standingSummary: String? = null,
-    @SerialName("nextEvent") val nextEvent: List<NextEvent>? = null
+    @SerialName("nextEvent") val nextEvent: List<NextEvent>? = null,
+    @SerialName("color") val color: String,
+    @SerialName("alternateColor") val alternateColor: String
 )
 
 @Keep

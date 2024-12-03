@@ -75,7 +75,7 @@ data class Competitor(
     @SerialName("score") val score: String,
     @SerialName("linescores") val lineScores: List<LineScore>? = null,
     @SerialName("statistics") val statistics: List<Statistic>,
-    @SerialName("leaders") val leaders: List<Leader>,
+    @SerialName("leaders") val leaders: List<Leader>?,
     @SerialName("records") val record: List<GRecord>
 )
 

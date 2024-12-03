@@ -7,11 +7,6 @@
         android:title="@string/home"/>
 
     <item
-        android:id="@+id/nav_player_stats"
-        android:icon="@drawable/baseline_person_24"
-        android:title="@string/player_stats"/>
-
-    <item
         android:id="@+id/nav_team_stats"
         android:icon="@drawable/baseline_groups_24"
         android:title="@string/team_stats"/>
