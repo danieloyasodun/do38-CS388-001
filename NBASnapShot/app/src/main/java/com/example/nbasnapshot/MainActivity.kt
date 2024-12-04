@@ -28,9 +28,11 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.serialization.decodeFromString
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TeamActionsListener {
+    private val favoriteTeams = mutableListOf<DisplayTeam>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         // Default fragment
         if (savedInstanceState == null) {
+            // Set HomeFragment as the default fragment
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment())
+                .commit()
         }
 
         // Set up navigation listener
@@ -63,38 +69,23 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     true
                 }
+                R.id.nav_profile -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, ProfileFragment())
+                        .commit()
+                    true
+                }
 
                 else -> false
             }
         }
     }
-}
 
-
-
-
-    /*private fun fetchAllData() {
-        fetchData(ARTICLE_SEARCH_URL1)
-        fetchData(ARTICLE_SEARCH_URL2)
-
-        ABR_LIST.forEach { abr ->
-            val teamRosterUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/$abr/roster"
-            val teamDetailsUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/$abr"
-            fetchData(teamRosterUrl)
-            fetchData(teamDetailsUrl)
-        }
+    override fun onTeamLongPressed(team: DisplayTeam) {
+        favoriteTeams.add(team)
+        // Notify the ProfileFragment about the update
+        val profileFragment = supportFragmentManager.findFragmentByTag("PROFILE_FRAGMENT") as? ProfileFragment
+        profileFragment?.updateFavoriteTeams(favoriteTeams)
     }
 
-    private fun fetchData(url: String) {
-        val client = AsyncHttpClient()
-        client.get(url, object : JsonHttpResponseHandler() {
-            override fun onFailure(statusCode: Int, headers: Headers?, response: String?, throwable: Throwable?) {
-                Log.e(TAG, "Failed to fetch data: $statusCode")
-            }
-
-            override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
-                Log.i(TAG, "Successfully fetched data")
-            }
-        })
-
-    }*/
+}

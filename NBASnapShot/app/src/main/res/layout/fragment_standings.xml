@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Eastern Conference"
+            android:text="EAST"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Western Conference"
+            android:text="WEST"
             android:textSize="18sp"
             android:textStyle="bold" />
 

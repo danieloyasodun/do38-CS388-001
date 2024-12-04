@@ -14,8 +14,10 @@ import com.bumptech.glide.Glide
 
 private const val TAG = "TeamAdapter"
 
-class TeamAdapter(private val context: Context, private val displayTeams: MutableList<DisplayTeam>):
-RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
+class TeamAdapter(private val context: Context,
+                  private val displayTeams: MutableList<DisplayTeam>,
+                  private val onTeamLongPress: (DisplayTeam) -> Unit
+) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
         private val teamImageView = itemView.findViewById<ImageView>(R.id.teamImage)
         private val teamNameTextView = itemView.findViewById<TextView>(R.id.standingTeamName)
@@ -23,6 +25,11 @@ RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
 
         init {
             itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener {
+                val team = displayTeams[absoluteAdapterPosition]
+                onTeamLongPress(team) // Trigger long press callback
+                true // Return true to indicate the event is consumed
+            }
         }
         fun bind(displayTeam: DisplayTeam){
             teamNameTextView.text = displayTeam.teamName
@@ -65,6 +72,7 @@ RecyclerView.Adapter<TeamAdapter.ViewHolder>(){
             // Start the activity
             context.startActivity(intent)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

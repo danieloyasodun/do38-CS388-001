@@ -46,6 +46,7 @@ dependencies {
 
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
+    implementation(libs.firebase.auth.ktx)
     kapt("androidx.room:room-compiler:$roomVersion")
 
     implementation("androidx.fragment:fragment-ktx:1.5.0")

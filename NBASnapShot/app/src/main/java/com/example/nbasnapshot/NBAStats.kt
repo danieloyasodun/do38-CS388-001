@@ -9,6 +9,7 @@ import kotlinx.serialization.Serializable
 data class NBAStats(
     @SerialName("displayName") val teamName: String,
     @SerialName("abbreviation") val abbreviation: String,
+    @SerialName("name") val name: String,
     @SerialName("logos") val logos: List<Logo>,
     @SerialName("links") val links: List<TeamLink>,
     @SerialName("record") val record: Record?,

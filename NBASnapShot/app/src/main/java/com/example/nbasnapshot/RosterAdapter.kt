@@ -11,8 +11,10 @@ import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class RosterAdapter(private val athletes: List<AthleteInfo>) :
-    RecyclerView.Adapter<RosterAdapter.RosterViewHolder>(){
+class RosterAdapter(
+    private val athletes: List<AthleteInfo>,
+    private val onPlayerLongPress: (AthleteInfo) -> Unit
+) : RecyclerView.Adapter<RosterAdapter.RosterViewHolder>(){
         inner class RosterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             private val athleteImageView: ImageView = itemView.findViewById(R.id.playerImage)
             private val athleteNameTextView: TextView = itemView.findViewById(R.id.playerName)
@@ -20,6 +22,14 @@ class RosterAdapter(private val athletes: List<AthleteInfo>) :
             private val athleteAgeTextView: TextView = itemView.findViewById(R.id.playerAge)
             private val athleteNumberTextView: TextView = itemView.findViewById(R.id.playerNumber)
             private val athleteCollegeTextView: TextView = itemView.findViewById(R.id.playerCollege)
+
+            init{
+                itemView.setOnLongClickListener {
+                    val athlete = athletes[adapterPosition]
+                    onPlayerLongPress(athlete)  // Trigger the callback when long pressed
+                    true
+                }
+            }
 
             fun bind(athlete: AthleteInfo) {
                 val formattedDate = athlete.dateOfBirth.let { dob ->

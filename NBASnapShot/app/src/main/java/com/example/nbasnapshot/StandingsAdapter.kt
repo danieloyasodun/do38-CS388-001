@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class StandingsAdapter (private val teams: List<TeamEntity>) : RecyclerView.Adapter<StandingsAdapter.TeamViewHolder>() {
+class StandingsAdapter (private val teams: List<TeamEntity>)
+    : RecyclerView.Adapter<StandingsAdapter.TeamViewHolder>() {
     inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val teamImageView: ImageView = itemView.findViewById(R.id.standingTeamImage)
         private val teamNameTextView: TextView = itemView.findViewById(R.id.standingTeamName)

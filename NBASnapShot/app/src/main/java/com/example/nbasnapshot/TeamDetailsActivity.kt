@@ -4,11 +4,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.fragment.app.activityViewModels
 
 class TeamDetailsActivity : AppCompatActivity() {
 
@@ -33,6 +36,8 @@ class TeamDetailsActivity : AppCompatActivity() {
     private lateinit var streakTextView: TextView
     private lateinit var rosterRecyclerView: RecyclerView
     private lateinit var rosterAdapter: RosterAdapter
+    private val favoritePlayers = mutableListOf<AthleteInfo>()
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +64,7 @@ class TeamDetailsActivity : AppCompatActivity() {
         val awayRecordSummary = intent.getStringExtra("AWAY_RECORD_SUMMARY")
         val avgPointsFor = intent.getStringExtra("AVG_POINTS_FOR")
         val avgPointsAgainst = intent.getStringExtra("AVG_POINTS_AGAINST")
-        val playoffSeed = intent.getStringExtra("PLAYOFF_SEED")?.toDoubleOrNull()?.toInt()
+        val playoffSeed = intent.getStringExtra("PLAYOFF_SEED")?.toDoubleOrNull()?.toInt() ?: 0
         val ticketLink = intent.getStringExtra("TICKET_LINK")
         val nextEvent = intent.getStringExtra("NEXT_EVENT")
         val streak = intent.getStringExtra("STREAK")
@@ -72,13 +77,13 @@ class TeamDetailsActivity : AppCompatActivity() {
         rosterRecyclerView = findViewById(R.id.rosterRecyclerView)
         rosterRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val ROSTER_API_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{$abbr}/roster"
+        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
 
         teamNameTextView.text = teamName
         standingSummaryTextView.text = standingSummary
         awayRecordTextView.text = "Away Record: $awayRecordSummary"
         homeRecordTextView.text = "Home Record: $homeRecordSummary"
-        playoffSeedTextView.text = "Playoff Seed:  ${playoffSeed ?: "N/A"}"
+        playoffSeedTextView.text = "Playoff Seed:  $playoffSeed"
         pointsScoredTextView.text = "Points Scored: $avgPointsFor"
         pointsAllowedTextView.text = "Points Allowed: $avgPointsAgainst"
         nextEventTextView.text = "Next Event: $nextEvent"
@@ -112,9 +117,7 @@ class TeamDetailsActivity : AppCompatActivity() {
             }
         }
 
-        abbr?.let {
-            fetchRoster(it)
-        }
+        abbr?.let { fetchRoster(it) }
 
     }
 
@@ -128,8 +131,17 @@ class TeamDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateRosterUI(athletes: List<AthleteInfo>) {
-        rosterAdapter = RosterAdapter(athletes)
+        rosterAdapter = RosterAdapter(athletes) { athlete ->
+            // Handle the long press and add player to favorites
+            onPlayerLongPressed(athlete)
+        }
         rosterRecyclerView.adapter = rosterAdapter
+    }
+
+    private fun onPlayerLongPressed(athlete: AthleteInfo) {
+        favoritesViewModel.addPlayerToFavorites(athlete) // Add the player to the ViewModel
+        favoritePlayers.add(athlete) // Add the player to the list of favorite players
+        Toast.makeText(this, "${athlete.displayName} added to favorites!", Toast.LENGTH_SHORT).show()
     }
 
     private fun fetchRoster(abbr: String) {

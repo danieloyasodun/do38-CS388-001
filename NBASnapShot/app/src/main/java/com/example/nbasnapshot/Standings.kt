@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import com.example.nbasnapshot.AppDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 
 private val EAST_ABR = listOf("ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DET", "IND", "MIA", "MIL",
@@ -15,7 +19,8 @@ private val EAST_ABR = listOf("ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DET", "
 private val WEST_ABR = listOf("DAL", "DEN", "GS", "HOU", "LAC", "LAL", "MEM", "MIN", "NO", "OKC",
                                 "PHX", "POR", "SAC", "SA", "UTAH")
 class Standings : Fragment() {
-    private lateinit var standingsAdapter: StandingsAdapter
+    private lateinit var eastStandingsAdapter: StandingsAdapter
+    private lateinit var westStandingsAdapter: StandingsAdapter
     private val eastStandings = mutableListOf<TeamEntity>()
     private val westStandings = mutableListOf<TeamEntity>()
     private lateinit var database: AppDatabase
@@ -26,8 +31,19 @@ class Standings : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_standings, container, false)
+        val recyclerViewEast = view.findViewById<RecyclerView>(R.id.recyclerViewEast)
+        val recyclerViewWest = view.findViewById<RecyclerView>(R.id.recyclerViewWest)
 
         database = AppDatabase.getInstance(requireContext())
+
+        eastStandingsAdapter = StandingsAdapter(eastStandings)
+        westStandingsAdapter = StandingsAdapter(westStandings)
+
+        recyclerViewEast.adapter = eastStandingsAdapter
+        recyclerViewEast.layoutManager = LinearLayoutManager(requireContext())
+
+        recyclerViewWest.adapter = westStandingsAdapter
+        recyclerViewWest.layoutManager = LinearLayoutManager(requireContext())
 
         lifecycleScope.launch {
             fetchTeamData()
@@ -57,10 +73,14 @@ class Standings : Fragment() {
         westStandings.sortByDescending { it.winPercentage.toDouble() }
 
         // Notify the adapter that data has been updated
-        standingsAdapter.notifyDataSetChanged()
+        eastStandingsAdapter.notifyDataSetChanged()
+        westStandingsAdapter.notifyDataSetChanged()
     }
 
     private suspend fun getTeamsFromDatabaseOrApi(): List<TeamEntity> {
-        return database.teamStatsDao().getAllTeams()
+        return withContext(Dispatchers.IO) {
+            // Ensure database query is run on background thread
+            database.teamStatsDao().getAllTeams()
+        }
     }
 }

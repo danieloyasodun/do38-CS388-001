@@ -10,6 +10,6 @@ data class TeamEntity(
     val logoUrl: String,
     val record: String,
     val winPercentage: String,
-    val playoffSeed: Number
+    val playoffSeed: Int?
 )
 

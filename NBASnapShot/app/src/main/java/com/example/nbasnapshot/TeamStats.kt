@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import okhttp3.Headers
@@ -33,6 +37,8 @@ private val ABR_LIST = listOf(
 class TeamStats : Fragment() {
     private lateinit var teamAdapter: TeamAdapter
     private val teamsList = mutableListOf<DisplayTeam>()
+    private val favoriteTeams = mutableListOf<DisplayTeam>()
+    private val favoriteTeamsViewModel: FavoritesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +48,11 @@ class TeamStats : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.teams)
 
         // Set up RecyclerView
-        teamAdapter = TeamAdapter(requireContext(), teamsList)
+        teamAdapter = TeamAdapter(requireContext(), teamsList) { team ->
+            // Handle long press (add the team to favorites)
+            favoriteTeamsViewModel.addTeamToFavorites(team) // Add the team to the ViewModel
+            Toast.makeText(requireContext(), "${team.teamName} added to favorites!", Toast.LENGTH_SHORT).show()
+        }
         recyclerView.adapter = teamAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -52,6 +62,21 @@ class TeamStats : Fragment() {
     }
 
     private var completedRequests = 0
+
+    private fun onTeamLongPressed(team: DisplayTeam) {
+        addTeamToFavorites(team)
+    }
+
+    // Function to add the team to the favorites list and show a Toast
+    private fun addTeamToFavorites(team: DisplayTeam) {
+        if (!favoriteTeams.contains(team)) {
+            favoriteTeams.add(team) // Add team to favorites
+            Toast.makeText(requireContext(), "${team.teamName} added to favorites!", Toast.LENGTH_SHORT).show()
+        } else {
+            // Optionally, show a message if the team is already in favorites
+            Toast.makeText(requireContext(), "${team.teamName} is already in favorites.", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private fun fetchTeamData() {
         val client = AsyncHttpClient()
@@ -82,13 +107,20 @@ class TeamStats : Fragment() {
 
                                 TeamEntity(
                                     abbreviation = nbaStats.abbreviation,
-                                    name = nbaStats.teamName,
+                                    name = nbaStats.name,
                                     logoUrl = nbaStats.logos[0].logoUrl,
                                     record = overallRecord?.summary ?: "N/A",
                                     winPercentage = statsList?.find { it.name == "winPercent" }?.value?.toString() ?: "0.0",
-                                    playoffSeed = playoffSeed
+                                    playoffSeed = playoffSeed.toInt()
                                 )
                             }
+
+                            lifecycleScope.launch {
+                                newTeam?.let {
+                                    insertTeamIntoDatabase(it)  // This will now run in the background
+                                }
+                            }
+
 
 
                             if (nbaStats != null) {
@@ -152,6 +184,18 @@ class TeamStats : Fragment() {
         completedRequests++
         if (completedRequests == ABR_LIST.size) {
             teamAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private suspend fun insertTeamIntoDatabase(team: TeamEntity) {
+        // Ensure the insert is on a background thread by explicitly using Dispatchers.IO
+        withContext(Dispatchers.IO) {
+            try {
+                val teamDao = AppDatabase.getInstance(requireContext()).teamStatsDao()
+                teamDao.insertAll(listOf(team))  // Insert the team into the database
+            } catch (e: Exception) {
+                Log.e("TeamStatsFragment", "Error inserting team into database", e)
+            }
         }
     }
 }
