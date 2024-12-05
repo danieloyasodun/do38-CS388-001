@@ -48,11 +48,14 @@ class TeamStats : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.teams)
 
         // Set up RecyclerView
-        teamAdapter = TeamAdapter(requireContext(), teamsList) { team ->
-            // Handle long press (add the team to favorites)
-            favoriteTeamsViewModel.addTeamToFavorites(team) // Add the team to the ViewModel
-            Toast.makeText(requireContext(), "${team.teamName} added to favorites!", Toast.LENGTH_SHORT).show()
+        teamAdapter = TeamAdapter(requireContext(), teamsList) { displayTeam ->
+            val teamEntity = displayTeam.toTeamEntity()
+            val isFavorited = if (teamEntity.isFavorite == 1) 0 else 1
+            favoriteTeamsViewModel.updateFavoriteStatus(teamEntity, isFavorited)
+            val statusMessage = if (isFavorited == 1) "added to followed!" else "removed from followed!"
+            Toast.makeText(requireContext(), "${displayTeam.teamName} $statusMessage", Toast.LENGTH_SHORT).show()
         }
+
         recyclerView.adapter = teamAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -71,10 +74,10 @@ class TeamStats : Fragment() {
     private fun addTeamToFavorites(team: DisplayTeam) {
         if (!favoriteTeams.contains(team)) {
             favoriteTeams.add(team) // Add team to favorites
-            Toast.makeText(requireContext(), "${team.teamName} added to favorites!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "${team.teamName} added to followed!", Toast.LENGTH_SHORT).show()
         } else {
             // Optionally, show a message if the team is already in favorites
-            Toast.makeText(requireContext(), "${team.teamName} is already in favorites.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "${team.teamName} is already in followed.", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -111,7 +114,18 @@ class TeamStats : Fragment() {
                                     logoUrl = nbaStats.logos[0].logoUrl,
                                     record = overallRecord?.summary ?: "N/A",
                                     winPercentage = statsList?.find { it.name == "winPercent" }?.value?.toString() ?: "0.0",
-                                    playoffSeed = playoffSeed.toInt()
+                                    playoffSeed = playoffSeed.toInt(),
+                                    recordSummary = overallRecord?.summary ?: "N/A",
+                                    standingSummary = nbaStats.standingSummary ?: "No standing summary" ,
+                                    homeRecordSummary = nbaStats.record?.items?.find { it.description == "Home Record" }?.summary ?: "N/A",
+                                    awayRecordSummary = nbaStats.record?.items?.find { it.description == "Away Record" }?.summary ?: "N/A",
+                                    avgPointsAgainst = statsList?.find { it.name == "avgPointsAgainst" }?.value?.toString() ?: "0.0",
+                                    avgPointsFor = statsList?.find { it.name == "avgPointsFor" }?.value?.toString() ?: "0.0",
+                                    nextEvent = nbaStats.nextEvent?.firstOrNull()?.shortName ?: "No upcoming events",
+                                    ticketLink = nbaStats.links.find { it.relation.contains("tickets") }?.link ?: "No ticket link",
+                                    color = nbaStats.color,
+                                    alternateColor = nbaStats.alternateColor,
+                                    streak = statsList?.find { it.name == "streak" }?.value?.toString() ?: "No streak"
                                 )
                             }
 
@@ -160,7 +174,7 @@ class TeamStats : Fragment() {
                                         streak = streak.toString(),
                                         color = nbaStats.color,
                                         alternateColor = nbaStats.alternateColor,
-                                        winPercent = winPercent.toString()
+                                        winPercent = winPercent.toString(),
                                     )
                                 )
                                 teamsList.sortBy { it.teamName }
@@ -189,13 +203,40 @@ class TeamStats : Fragment() {
 
     private suspend fun insertTeamIntoDatabase(team: TeamEntity) {
         // Ensure the insert is on a background thread by explicitly using Dispatchers.IO
-        withContext(Dispatchers.IO) {
-            try {
-                val teamDao = AppDatabase.getInstance(requireContext()).teamStatsDao()
-                teamDao.insertAll(listOf(team))  // Insert the team into the database
-            } catch (e: Exception) {
-                Log.e("TeamStatsFragment", "Error inserting team into database", e)
+        if (isAdded) {
+            withContext(Dispatchers.IO) {
+                try {
+                    val teamDao = AppDatabase.getInstance(requireContext()).teamStatsDao()
+                    teamDao.insertAll(listOf(team))  // Insert the team into the database
+                } catch (e: Exception) {
+                    Log.e("TeamStatsFragment", "Error inserting team into database", e)
+                }
             }
+        } else {
+            Log.e("TeamStatsFragment", "Fragment is not attached to a context")
         }
+    }
+
+    private fun DisplayTeam.toTeamEntity(): TeamEntity {
+        return TeamEntity(
+            abbreviation = this.abbreviation,
+            name = this.teamName,
+            logoUrl = this.logoUrl,
+            record = this.recordSummary,
+            winPercentage = this.winPercent,
+            playoffSeed = this.playoffSeed.toFloatOrNull()?.toInt() ?: 0,
+            recordSummary = this.recordSummary,
+            standingSummary = this.standingSummary,
+            homeRecordSummary = this.homeRecordSummary,
+            awayRecordSummary = this.awayRecordSummary,
+            avgPointsAgainst = this.avgPointsAgainst,
+            avgPointsFor = this.avgPointsFor,
+            nextEvent = this.nextEvent,
+            ticketLink = this.ticketLink,
+            streak = this.streak,
+            color = this.color,
+            alternateColor = this.alternateColor,
+            isFavorite = 0
+        )
     }
 }

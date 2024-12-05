@@ -19,7 +19,7 @@ class LeaderAdapter(private val leaders: List<Leaders>) : RecyclerView.Adapter<L
         fun bind(leader: Leaders) {
             leaderName.text = leader.displayName
             leaderStatName.text = leader.name
-            leaderStatValue.text = String.format("%.2f", leader.value)
+            leaderStatValue.text = String.format("%.1f", leader.value)
 
             // Load the leader image
             Glide.with(itemView.context)

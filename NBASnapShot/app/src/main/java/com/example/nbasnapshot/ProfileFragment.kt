@@ -12,13 +12,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class ProfileFragment : Fragment() {
 
     private lateinit var teamsAdapter: TeamAdapter
-    private lateinit var playersAdapter: RosterAdapter
     private val favoriteTeams = mutableListOf<DisplayTeam>() // List of teams to display in RecyclerView
-    private val favoritePlayers = mutableListOf<AthleteInfo>()
     private val favoritesViewModel: FavoritesViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,32 +30,18 @@ class ProfileFragment : Fragment() {
         // Observe the favorite teams list
         favoritesViewModel.favoriteTeams.observe(viewLifecycleOwner) { teams ->
             favoriteTeams.clear()
-            favoriteTeams.addAll(teams)
-            teamsAdapter.notifyDataSetChanged() // Update RecyclerView for teams
+            favoriteTeams.addAll(teams.map { convertToDisplayTeam(it) })
+            teamsAdapter.notifyDataSetChanged()
         }
 
-        favoritesViewModel.favoritePlayers.observe(viewLifecycleOwner) { players ->
-            favoritePlayers.clear()
-            favoritePlayers.addAll(players)
-            playersAdapter.notifyDataSetChanged()  // Update the RecyclerView
-        }
 
         // Initialize RecyclerView and set up the adapter
         val teamsRecyclerView = view.findViewById<RecyclerView>(R.id.favoritesTeamsRecyclerView)
-        teamsAdapter = TeamAdapter(requireContext(), favoriteTeams) { team ->
-            // Handle long press (add the team to favorites)
-            addTeamToFavorites(team)
-        }
+        teamsAdapter = TeamAdapter(requireContext(), favoriteTeams,
+            onTeamLongPress = { team -> removeTeamFromFavorites(team) } // Long press to remove team
+        )
         teamsRecyclerView.adapter = teamsAdapter
         teamsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        val playersRecyclerView = view.findViewById<RecyclerView>(R.id.favoritesPlayersRecyclerView)
-        playersAdapter = RosterAdapter(favoritePlayers) { athlete ->
-            // Handle long press (add the player to favorites)
-            addPlayerToFavorites(athlete)
-        }
-        playersRecyclerView.adapter = playersAdapter
-        playersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Set up the logout button
         val logoutButton = view.findViewById<Button>(R.id.logoutButton)
@@ -72,20 +58,20 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    // Function to add the team to the favorites list
-    private fun addTeamToFavorites(team: DisplayTeam) {
-        favoritesViewModel.addTeamToFavorites(team) // Add the team to the ViewModel
+    private fun removeTeamFromFavorites(team: DisplayTeam) {
+        if (favoriteTeams.contains(team)) {
+            favoriteTeams.remove(team) // Remove team from the list
 
-        // Show a Toast confirming that the team has been added
-        Toast.makeText(requireContext(), "${team.teamName} added to favorites!", Toast.LENGTH_SHORT).show()
-    }
+            // Convert DisplayTeam to TeamEntity
+            val teamEntity = convertToTeamEntity(team)
 
-    // Function to add the player to the favorites list
-    private fun addPlayerToFavorites(athlete: AthleteInfo) {
-        favoritesViewModel.addPlayerToFavorites(athlete) // Add the player to the ViewModel
+            // Pass the TeamEntity to the ViewModel to remove from the database
+            favoritesViewModel.removeTeamFromFavorites(teamEntity)
 
-        // Show a Toast confirming that the player has been added
-        Toast.makeText(requireContext(), "${athlete.displayName} added to favorites!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "${team.teamName} removed from followed!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "${team.teamName} is not in followed.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Function to update the list of favorite teams (if needed)
@@ -95,10 +81,49 @@ class ProfileFragment : Fragment() {
         teamsAdapter.notifyDataSetChanged()  // Notify the adapter that the data has changed
     }
 
-    // Function to update the list of favorite players (if needed)
-    fun updateFavoritePlayers(newPlayers: List<AthleteInfo>) {
-        favoritePlayers.clear()  // Clear the existing list
-        favoritePlayers.addAll(newPlayers)  // Add new players
-        playersAdapter.notifyDataSetChanged()  // Notify the adapter that the data has changed
+    private fun convertToTeamEntity(displayTeam: DisplayTeam): TeamEntity {
+        return TeamEntity(
+            name = displayTeam.teamName,
+            abbreviation = displayTeam.abbreviation,
+            logoUrl = displayTeam.logoUrl,
+            record = displayTeam.recordSummary,
+            standingSummary = displayTeam.standingSummary,
+            homeRecordSummary = displayTeam.homeRecordSummary,
+            awayRecordSummary = displayTeam.awayRecordSummary,
+            avgPointsAgainst = displayTeam.avgPointsAgainst,
+            avgPointsFor = displayTeam.avgPointsFor,
+            playoffSeed = displayTeam.playoffSeed?.toIntOrNull(),
+            nextEvent = displayTeam.nextEvent,
+            ticketLink = displayTeam.ticketLink,
+            streak = displayTeam.streak,
+            color = displayTeam.color,
+            alternateColor = displayTeam.alternateColor,
+            winPercentage = displayTeam.winPercent,
+            isFavorite = 0,
+            recordSummary = displayTeam.recordSummary // Set isFavorite to 0 since we're removing it from favorites
+        )
+    }
+
+
+    // Convert TeamEntity to DisplayTeam
+    private fun convertToDisplayTeam(teamEntity: TeamEntity): DisplayTeam {
+        return DisplayTeam(
+            teamName = teamEntity.name,
+            abbreviation = teamEntity.abbreviation,
+            logoUrl = teamEntity.logoUrl,  // Assuming logoUrl is part of TeamEntity
+            recordSummary = teamEntity.record,  // Assuming record is part of TeamEntity
+            standingSummary = teamEntity.standingSummary,  // Assuming standingSummary is part of TeamEntity,  // You might need to compute or pass this from another field
+            homeRecordSummary = teamEntity.homeRecordSummary,  // Similarly, you may need to set this
+            awayRecordSummary = teamEntity.awayRecordSummary,
+            avgPointsAgainst = teamEntity.avgPointsAgainst,  // If applicable, get this data
+            avgPointsFor = teamEntity.avgPointsFor,
+            playoffSeed = teamEntity.playoffSeed?.toString() ?: "0",  // Handle nulls for playoffSeed
+            nextEvent = teamEntity.nextEvent ?: "",  // Set appropriately
+            ticketLink = teamEntity.ticketLink ?:"",  // Set appropriately
+            streak = teamEntity.streak ?: "",  // Set appropriately
+            color = teamEntity.color ?: "",  // Handle if necessary
+            alternateColor = teamEntity.alternateColor ?: "",
+            winPercent = teamEntity.winPercentage  // Assuming winPercentage is part of TeamEntity
+        )
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,7 +18,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.fragment.app.activityViewModels
 
 class TeamDetailsActivity : AppCompatActivity() {
 
@@ -36,12 +34,13 @@ class TeamDetailsActivity : AppCompatActivity() {
     private lateinit var streakTextView: TextView
     private lateinit var rosterRecyclerView: RecyclerView
     private lateinit var rosterAdapter: RosterAdapter
-    private val favoritePlayers = mutableListOf<AthleteInfo>()
     private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_details)
+
+        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
 
         // Initialize views
         teamImageView = findViewById(R.id.teamImageView)
@@ -77,7 +76,6 @@ class TeamDetailsActivity : AppCompatActivity() {
         rosterRecyclerView = findViewById(R.id.rosterRecyclerView)
         rosterRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        favoritesViewModel = ViewModelProvider(this).get(FavoritesViewModel::class.java)
 
         teamNameTextView.text = teamName
         standingSummaryTextView.text = standingSummary
@@ -117,7 +115,9 @@ class TeamDetailsActivity : AppCompatActivity() {
             }
         }
 
-        abbr?.let { fetchRoster(it) }
+        abbr?.let {
+            fetchRoster(it)
+        }
 
     }
 
@@ -131,17 +131,8 @@ class TeamDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateRosterUI(athletes: List<AthleteInfo>) {
-        rosterAdapter = RosterAdapter(athletes) { athlete ->
-            // Handle the long press and add player to favorites
-            onPlayerLongPressed(athlete)
-        }
+        rosterAdapter = RosterAdapter(athletes)
         rosterRecyclerView.adapter = rosterAdapter
-    }
-
-    private fun onPlayerLongPressed(athlete: AthleteInfo) {
-        favoritesViewModel.addPlayerToFavorites(athlete) // Add the player to the ViewModel
-        favoritePlayers.add(athlete) // Add the player to the list of favorite players
-        Toast.makeText(this, "${athlete.displayName} added to favorites!", Toast.LENGTH_SHORT).show()
     }
 
     private fun fetchRoster(abbr: String) {
@@ -170,5 +161,6 @@ class TeamDetailsActivity : AppCompatActivity() {
                 Toast.makeText(this@TeamDetailsActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 }

@@ -10,6 +10,18 @@ data class TeamEntity(
     val logoUrl: String,
     val record: String,
     val winPercentage: String,
-    val playoffSeed: Int?
+    val playoffSeed: Int?,
+    var isFavorite: Int = 0,
+    val color: String? = null,
+    val alternateColor: String? = null,
+    val nextEvent: String? = null,
+    val ticketLink: String? = null,
+    val streak: String? = null,
+    val recordSummary: String,
+    val standingSummary: String,
+    val homeRecordSummary: String,
+    val awayRecordSummary: String,
+    val avgPointsAgainst: String,
+    val avgPointsFor: String
 )
 

@@ -16,16 +16,13 @@
         android:gravity="center"
         android:textColor="@android:color/black"
         android:background="#f1f1f1"/>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FOLLOWED TEAMS"/>
     <!-- RecyclerView for Favorite Teams -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesTeamsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- RecyclerView for Favorite Players -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoritesPlayersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

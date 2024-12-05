@@ -128,18 +128,19 @@
         app:layout_constraintTop_toBottomOf="@+id/homeTeamName" />
 
     <!-- Home Score -->
+
+    <!-- Separator Line -->
     <TextView
         android:id="@+id/homeScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="60dp"
         android:text="HOME SCORE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/homeTeamName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.502" />
+        app:layout_constraintVertical_bias="0.503" />
 
-    <!-- Separator Line -->
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
