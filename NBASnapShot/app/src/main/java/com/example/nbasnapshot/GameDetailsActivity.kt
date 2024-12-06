@@ -77,7 +77,7 @@ class GameDetailsActivity : AppCompatActivity() {
         homeTeamScoreTextView.text = homeTeamScore
         gameHeaderTextView.text = gameHeader
         displayClockTextView.text = displayClock
-        periodTextView.text = period.toString()
+        periodTextView.text = "Quarter: " + period.toString()
 
         // Handle game clock and quarter visibility
         if (displayClock == "0.0" && period == 0) {

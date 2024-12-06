@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_height="105dp">
 
     <ImageView
         android:id="@+id/playerImage"
@@ -19,8 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="PLAYER NAME"
+        android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/playerImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +32,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="HEIGHT, WEIGHT"
+        android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/playerImage"
         app:layout_constraintTop_toBottomOf="@+id/playerName" />
 
@@ -41,6 +43,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="DOB (AGE)"
+        android:textSize="10dp"
         app:layout_constraintStart_toEndOf="@+id/playerImage"
         app:layout_constraintTop_toBottomOf="@+id/playerHeightWeight" />
 
@@ -51,6 +54,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="#X, POS"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerImage"
         app:layout_constraintTop_toBottomOf="@+id/playerAge"
@@ -64,6 +68,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="COLLEGE"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playerImage"
         app:layout_constraintTop_toBottomOf="@+id/playerNumber"
