@@ -120,16 +120,19 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## GitHub Project board
 
-[Add screenshot of your Project Board with the updated status of issues for Milestone 3. Note that these should include the updated issues you worked on for this sprint and not be a duplicate of Milestone 2 Project board.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+ <img src="(https://github.com/user-attachments/assets/cc963c26-8ac6-44a4-95d1-71beefd4babb" width=600>
 
 ## Completed user stories
 
-- List the completed user stories from this unit
-- List any pending user stories / any user stories you decided to cut
-from the original requirements
+- Added a details activity for the games where it shows the stat leaders for each team.
+- Game view shows quarter, game clock and the location of the game.
+- Under the team details view added a recycler view to display the players on the teams.
+- I originally wanted to make an activity where the user would be able to see a player's stats by clicking on their profile in the list, but I didn't have an API where the current season's data was loaded into.
+- I wished to add the option for users to also add players to their followed list, so that they could keep up with their performances, but with no stats for each individual it didn't really make much sense for now.
 
 [Add video/gif of your current application that shows build progress]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/user-attachments/assets/878215e4-d87f-4065-8071-aa9e1c80d263" width=600>
+
 
 ## App Demo Video
 
