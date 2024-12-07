@@ -127,6 +127,7 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 - Added a details activity for the games where it shows the stat leaders for each team.
 - Game view shows quarter, game clock and the location of the game.
 - Under the team details view added a recycler view to display the players on the teams.
+- Better formated the UI to enhance the user experience.
 - I originally wanted to make an activity where the user would be able to see a player's stats by clicking on their profile in the list, but I didn't have an API where the current season's data was loaded into.
 - I wished to add the option for users to also add players to their followed list, so that they could keep up with their performances, but with no stats for each individual it didn't really make much sense for now.
 
