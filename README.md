@@ -137,4 +137,4 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## App Demo Video
 
-- Embed the YouTube/Vimeo link of your Completed Demo Day prep video
+- [Embed the YouTube/Vimeo link of your Completed Demo Day prep video](https://youtube.com/shorts/arp9LDqFtoA?feature=share)
