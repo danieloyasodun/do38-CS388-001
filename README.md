@@ -83,8 +83,7 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 
 ## Wireframes
-
-[Add picture of your hand sketched wireframes in this section] <img src="https://github.com/user-attachments/assets/a5097805-6497-41e4-a6c0-55c767768984" width=600>
+<img src="https://github.com/user-attachments/assets/a5097805-6497-41e4-a6c0-55c767768984" width=600>
 
 # Milestone 2 - Build Sprint 1 (Unit 8)
 
