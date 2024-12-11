@@ -110,7 +110,7 @@ The app is a comprehensive companion for NBA fans, offering real-time updates an
 
 ## GitHub Project board
 
- <img src="(https://github.com/user-attachments/assets/cc963c26-8ac6-44a4-95d1-71beefd4babb" width=600>
+ <img src="https://github.com/user-attachments/assets/cc963c26-8ac6-44a4-95d1-71beefd4babb" width=600>
 
 ## Completed user stories
 
